@@ -9,6 +9,7 @@
 import UIKit
 
 class ChecklistViewController: UITableViewController, ItemDetailViewControllerDelegate {
+    var checklist: Checklist!
     var items: [ChecklistItem]
 
     // MARK: View Controller Life Cycle
@@ -23,7 +24,7 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        title = checklist.name
     }
 
     override func didReceiveMemoryWarning() {
