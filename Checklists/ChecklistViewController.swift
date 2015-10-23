@@ -110,6 +110,4 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
         }
         dismissViewControllerAnimated(true, completion: nil)
     }
-
-    // MARK: Actions
 }

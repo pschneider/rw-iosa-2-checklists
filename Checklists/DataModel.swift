@@ -1,0 +1,48 @@
+//
+//  DataModel.swift
+//  Checklists
+//
+//  Created by Patrick Schneider on 23/10/15.
+//  Copyright © 2015 Patrick Schneider. All rights reserved.
+//
+
+import Foundation
+
+class DataModel {
+    var lists = [Checklist]()
+
+    // MARK: Life Cycle
+    init() {
+        loadChecklists()
+    }
+
+    // MARK: Persistens
+
+    func documentsDirectory() -> String {
+        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        return paths[0]
+    }
+
+    func dataFilePath() -> String {
+        return (documentsDirectory() as NSString).stringByAppendingPathComponent("Checklists.plist")
+    }
+
+    func saveChecklists() {
+        let data = NSMutableData()
+        let archiver = NSKeyedArchiver(forWritingWithMutableData: data)
+        archiver.encodeObject(lists, forKey: "Checklists")
+        archiver.finishEncoding()
+        data.writeToFile(dataFilePath(), atomically: true)
+    }
+
+    func loadChecklists() {
+        let path = dataFilePath()
+        print(path)
+        if NSFileManager.defaultManager().fileExistsAtPath(path),
+            let data = NSData(contentsOfFile: path) {
+                let unarchiver = NSKeyedUnarchiver(forReadingWithData: data)
+                lists = unarchiver.decodeObjectForKey("Checklists") as! [Checklist]
+                unarchiver.finishDecoding()
+        }
+    }
+}

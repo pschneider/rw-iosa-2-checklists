@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CD1C8A1D1BD8286500DB5DF7 /* ChecklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1C8A1C1BD8286500DB5DF7 /* ChecklistItem.swift */; };
+		CD1D099F1BDAC6CF00463558 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD1D099E1BDAC6CF00463558 /* DataModel.swift */; };
 		CD21C36B1BD96D4500835656 /* Checklist.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD21C36A1BD96D4500835656 /* Checklist.swift */; };
 		CD21C36D1BD973E600835656 /* ListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD21C36C1BD973E600835656 /* ListDetailViewController.swift */; };
 		CD30D18F1BD6C5F4008B6B34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD30D18E1BD6C5F4008B6B34 /* AppDelegate.swift */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		CD1C8A1C1BD8286500DB5DF7 /* ChecklistItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChecklistItem.swift; sourceTree = "<group>"; };
+		CD1D099E1BDAC6CF00463558 /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		CD21C36A1BD96D4500835656 /* Checklist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Checklist.swift; sourceTree = "<group>"; };
 		CD21C36C1BD973E600835656 /* ListDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListDetailViewController.swift; sourceTree = "<group>"; };
 		CD30D18B1BD6C5F4008B6B34 /* Checklists.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Checklists.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,6 +63,7 @@
 			children = (
 				CD1C8A1C1BD8286500DB5DF7 /* ChecklistItem.swift */,
 				CD21C36A1BD96D4500835656 /* Checklist.swift */,
+				CD1D099E1BDAC6CF00463558 /* DataModel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 				CD21C36B1BD96D4500835656 /* Checklist.swift in Sources */,
 				CD21C36D1BD973E600835656 /* ListDetailViewController.swift in Sources */,
 				CD1C8A1D1BD8286500DB5DF7 /* ChecklistItem.swift in Sources */,
+				CD1D099F1BDAC6CF00463558 /* DataModel.swift in Sources */,
 				CD7EA3EB1BD9665000790A40 /* AllListsViewController.swift in Sources */,
 				CD30D18F1BD6C5F4008B6B34 /* AppDelegate.swift in Sources */,
 			);
