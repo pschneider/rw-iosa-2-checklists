@@ -21,18 +21,6 @@ class DataModel {
         }
     }
 
-    func handleFirstTime() {
-        let userDefaults = NSUserDefaults.standardUserDefaults()
-        let firstTime = userDefaults.boolForKey("FirstTime")
-        if firstTime {
-            let checklist = Checklist(name: "List")
-            lists.append(checklist)
-            indexOfSelectedChecklist = 0
-            userDefaults.setBool(false, forKey: "FirstTime")
-            userDefaults.synchronize()
-        }
-    }
-
     // MARK: Life Cycle
     init() {
         loadChecklists()
@@ -63,10 +51,23 @@ class DataModel {
         let path = dataFilePath()
         print(path)
         if NSFileManager.defaultManager().fileExistsAtPath(path),
-            let data = NSData(contentsOfFile: path) {
-                let unarchiver = NSKeyedUnarchiver(forReadingWithData: data)
-                lists = unarchiver.decodeObjectForKey("Checklists") as! [Checklist]
-                unarchiver.finishDecoding()
+           let data = NSData(contentsOfFile: path) {
+            sortChecklists()
+            let unarchiver = NSKeyedUnarchiver(forReadingWithData: data)
+            lists = unarchiver.decodeObjectForKey("Checklists") as! [Checklist]
+            unarchiver.finishDecoding()
+        }
+    }
+
+    func handleFirstTime() {
+        let userDefaults = NSUserDefaults.standardUserDefaults()
+        let firstTime = userDefaults.boolForKey("FirstTime")
+        if firstTime {
+            let checklist = Checklist(name: "List")
+            lists.append(checklist)
+            indexOfSelectedChecklist = 0
+            userDefaults.setBool(false, forKey: "FirstTime")
+            userDefaults.synchronize()
         }
     }
 
@@ -77,5 +78,12 @@ class DataModel {
             "FirstTime": true
         ]
         NSUserDefaults.standardUserDefaults().registerDefaults(dictionary)
+    }
+
+    // MARK: Checklist handling
+    func sortChecklists() {
+        lists.sortInPlace { checklist1, checklist2 in
+            checklist1.name.localizedStandardCompare(checklist2.name) == .OrderedAscending
+        }
     }
 }
