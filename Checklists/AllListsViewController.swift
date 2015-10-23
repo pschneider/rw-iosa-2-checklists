@@ -14,6 +14,11 @@ class AllListsViewController: UITableViewController, UITextFieldDelegate, ListDe
 
     // MARK: Life Cycle
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        tableView.reloadData()
+    }
+
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
 
@@ -69,6 +74,16 @@ class AllListsViewController: UITableViewController, UITextFieldDelegate, ListDe
         let checklist = dataModel.lists[indexPath.row]
         cell.textLabel!.text = checklist.name
         cell.accessoryType = .DetailDisclosureButton
+
+        let count = checklist.countUncheckedItems()
+        if checklist.items.count == 0 {
+            cell.detailTextLabel!.text = "(No Items)"
+        } else if count == 0 {
+            cell.detailTextLabel!.text = "All done!"
+        } else {
+            cell.detailTextLabel!.text = "\(count) Remaining."
+        }
+
         return cell
     }
 
@@ -77,7 +92,7 @@ class AllListsViewController: UITableViewController, UITextFieldDelegate, ListDe
         if let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) {
             return cell
         } else {
-            return UITableViewCell(style: .Default, reuseIdentifier: cellIdentifier)
+            return UITableViewCell(style: .Subtitle, reuseIdentifier: cellIdentifier)
         }
     }
 
