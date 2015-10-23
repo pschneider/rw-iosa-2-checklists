@@ -8,12 +8,23 @@
 
 import Foundation
 
-class DataModel {
+struct DataModel {
     var lists = [Checklist]()
+
+    var indexOfSelectedChecklist: Int {
+        get {
+            return NSUserDefaults.standardUserDefaults().integerForKey("ChecklistIndex")
+        }
+        set {
+            NSUserDefaults.standardUserDefaults().setInteger(newValue, forKey: "ChecklistIndex")
+            NSUserDefaults.standardUserDefaults().synchronize()
+        }
+    }
 
     // MARK: Life Cycle
     init() {
         loadChecklists()
+        registerDefaults()
     }
 
     // MARK: Persistens
@@ -35,7 +46,7 @@ class DataModel {
         data.writeToFile(dataFilePath(), atomically: true)
     }
 
-    func loadChecklists() {
+    mutating func loadChecklists() {
         let path = dataFilePath()
         print(path)
         if NSFileManager.defaultManager().fileExistsAtPath(path),
@@ -44,5 +55,11 @@ class DataModel {
                 lists = unarchiver.decodeObjectForKey("Checklists") as! [Checklist]
                 unarchiver.finishDecoding()
         }
+    }
+
+    // MARK: NSUserdefaults defaults
+    func registerDefaults() {
+        let dictionary = ["ChecklistIndex": -1]
+        NSUserDefaults.standardUserDefaults().registerDefaults(dictionary)
     }
 }

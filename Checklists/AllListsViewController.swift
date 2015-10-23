@@ -8,11 +8,23 @@
 
 import UIKit
 
-class AllListsViewController: UITableViewController, UITextFieldDelegate, ListDetailViewControllerDelegate {
+class AllListsViewController: UITableViewController, UITextFieldDelegate, ListDetailViewControllerDelegate, UINavigationControllerDelegate {
 
     var dataModel: DataModel!
 
     // MARK: Life Cycle
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+
+        navigationController?.delegate = self
+
+        let index = dataModel.indexOfSelectedChecklist
+        if index >= 0 && index < dataModel.lists.count {
+            let checklist = dataModel.lists[index]
+            performSegueWithIdentifier("ShowChecklist", sender: checklist)
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,7 +81,11 @@ class AllListsViewController: UITableViewController, UITextFieldDelegate, ListDe
         }
     }
 
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath:
+        NSIndexPath) {
+
+        dataModel.indexOfSelectedChecklist = indexPath.row
+
         let checklist = dataModel.lists[indexPath.row]
         performSegueWithIdentifier("ShowChecklist", sender: checklist)
     }
@@ -117,5 +133,12 @@ class AllListsViewController: UITableViewController, UITextFieldDelegate, ListDe
 
     func listDetailViewControllerDidCancel(controller: ListDetailViewController) {
         dismissViewControllerAnimated(true, completion: nil)
+    }
+
+    // MARK: UINavigationControllerDelegate
+    func navigationController(navigationController: UINavigationController, willShowViewController viewController: UIViewController, animated: Bool) {
+        if viewController === self {
+            dataModel.indexOfSelectedChecklist = -1
+        }
     }
 }
