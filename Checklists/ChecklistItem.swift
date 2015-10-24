@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class ChecklistItem: NSObject, NSCoding {
     var text = ""
@@ -43,6 +44,12 @@ class ChecklistItem: NSObject, NSCoding {
         checked = !checked
     }
 
+    deinit {
+        if let notification = notificationForThisItem() {
+            UIApplication.sharedApplication().cancelLocalNotification(notification)
+        }
+    }
+
     // MARK: NSCoding
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(text, forKey: "Text")
@@ -50,5 +57,31 @@ class ChecklistItem: NSObject, NSCoding {
         aCoder.encodeObject(dueDate, forKey: "DueDate")
         aCoder.encodeBool(shouldRemind, forKey: "ShouldRemind")
         aCoder.encodeInteger(itemID, forKey: "ItemID")
+    }
+
+    // MARK: Notification
+    func scheduleNotification() {
+        if let notification = notificationForThisItem() {
+            UIApplication.sharedApplication().cancelLocalNotification(notification)
+        }
+        if shouldRemind && dueDate.compare(NSDate()) != .OrderedAscending {
+            let localNotification = UILocalNotification()
+            localNotification.fireDate = dueDate
+            localNotification.timeZone = NSTimeZone.defaultTimeZone()
+            localNotification.alertBody = text
+            localNotification.soundName = UILocalNotificationDefaultSoundName
+            localNotification.userInfo = ["ItemID": itemID]
+            UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+        }
+    }
+
+    func notificationForThisItem() -> UILocalNotification? {
+        let allNotifications = UIApplication.sharedApplication().scheduledLocalNotifications!
+        for notification in allNotifications {
+            if let number = notification.userInfo?["ItemID"] as? Int where number == itemID {
+                return notification
+            }
+        }
+        return nil
     }
 }
