@@ -153,7 +153,7 @@ class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
     }
 
     func textFieldDidBeginEditing(textField: UITextField) {
-        hideDatePicker()
+        if datePickerVisible { hideDatePicker() }
     }
 
     // MARK: Actions
