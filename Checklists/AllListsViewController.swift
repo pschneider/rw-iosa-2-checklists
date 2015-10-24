@@ -15,7 +15,7 @@ class AllListsViewController: UITableViewController, UITextFieldDelegate, ListDe
     // MARK: Life Cycle
 
     override func viewWillAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+        super.viewWillAppear(animated)
         tableView.reloadData()
     }
 
