@@ -47,26 +47,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		CD2DEFEF1BDBB12500BA345A /* Checklists */ = {
+		CD2DEFEF1BDBB12500BA345A /* All Checklists */ = {
 			isa = PBXGroup;
 			children = (
 				CD7EA3EA1BD9665000790A40 /* AllListsViewController.swift */,
-				CD21C36C1BD973E600835656 /* ListDetailViewController.swift */,
-				CD2DEFF11BDBB1B700BA345A /* IconPickerViewController.swift */,
-				CD21C36A1BD96D4500835656 /* Checklist.swift */,
 				CD1D099E1BDAC6CF00463558 /* DataModel.swift */,
 			);
-			name = Checklists;
+			name = "All Checklists";
 			sourceTree = "<group>";
 		};
-		CD2DEFF01BDBB15C00BA345A /* CkecklistItems */ = {
+		CD2DEFF01BDBB15C00BA345A /* Checklist */ = {
+			isa = PBXGroup;
+			children = (
+				CD30D1901BD6C5F4008B6B34 /* ChecklistViewController.swift */,
+				CD21C36A1BD96D4500835656 /* Checklist.swift */,
+				CD21C36C1BD973E600835656 /* ListDetailViewController.swift */,
+				CD2DEFF11BDBB1B700BA345A /* IconPickerViewController.swift */,
+			);
+			name = Checklist;
+			sourceTree = "<group>";
+		};
+		CD2DEFF31BDBCE5000BA345A /* Checklist Item */ = {
 			isa = PBXGroup;
 			children = (
 				CD9EE3691BD91C9B001333F6 /* ItemDetailViewController.swift */,
-				CD30D1901BD6C5F4008B6B34 /* ChecklistViewController.swift */,
 				CD1C8A1C1BD8286500DB5DF7 /* ChecklistItem.swift */,
 			);
-			name = CkecklistItems;
+			name = "Checklist Item";
 			sourceTree = "<group>";
 		};
 		CD30D1821BD6C5F4008B6B34 = {
@@ -88,8 +95,9 @@
 		CD30D18D1BD6C5F4008B6B34 /* Checklists */ = {
 			isa = PBXGroup;
 			children = (
-				CD2DEFF01BDBB15C00BA345A /* CkecklistItems */,
-				CD2DEFEF1BDBB12500BA345A /* Checklists */,
+				CD2DEFF31BDBCE5000BA345A /* Checklist Item */,
+				CD2DEFF01BDBB15C00BA345A /* Checklist */,
+				CD2DEFEF1BDBB12500BA345A /* All Checklists */,
 				CD30D18E1BD6C5F4008B6B34 /* AppDelegate.swift */,
 				CD30D1921BD6C5F4008B6B34 /* Main.storyboard */,
 				CD30D1951BD6C5F4008B6B34 /* Assets.xcassets */,
