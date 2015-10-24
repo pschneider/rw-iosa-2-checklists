@@ -14,14 +14,17 @@ protocol ListDetailViewControllerDelegate: class {
     func listDetailViewController(controller: ListDetailViewController, didFinishEditingChecklist checklist: Checklist)
 }
 
-class ListDetailViewController: UITableViewController, UITextFieldDelegate {
+class ListDetailViewController: UITableViewController, UITextFieldDelegate, IconPickerViewControllerDelegate {
 
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
+    @IBOutlet weak var iconImageView: UIImageView!
 
     weak var delegate: ListDetailViewControllerDelegate?
 
     var checklistToEdit: Checklist?
+
+    var iconName = "Folder"
 
     // MARK: Life Cycle
 
@@ -35,14 +38,28 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
 
         if let checklist = checklistToEdit {
             title = "Edit Checklist"
+            iconName = checklist.iconName
             textField.text = checklist.name
             doneBarButton.enabled = true
+        }
+
+        iconImageView.image = UIImage(named: iconName)
+    }
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "PickIcon" {
+            let controller = segue.destinationViewController as! IconPickerViewController
+            controller.delegate = self
         }
     }
 
     // MARK: Table View Delegate
     override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        return nil
+        if indexPath.section == 1 {
+            return indexPath
+        } else {
+            return nil
+        }
     }
 
     // MARK: Text Field Delegate
@@ -64,11 +81,19 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
     @IBAction func done() {
         if let checklist = checklistToEdit {
             checklist.name = textField.text!
+            checklist.iconName = iconName
             delegate?.listDetailViewController(self, didFinishEditingChecklist: checklist)
         } else {
-            let checklist = Checklist(name: textField.text!)
+            let checklist = Checklist(name: textField.text!, iconName: iconName)
             delegate?.listDetailViewController(self, didFinishAddingChecklist: checklist)
         }
+    }
+
+    // MARK: IconPickerViewControllerDelegate
+    func iconPicker(picker: IconPickerViewController, didPickIcon iconName: String) {
+        self.iconName = iconName
+        iconImageView.image = UIImage(named: iconName)
+        navigationController?.popViewControllerAnimated(true)
     }
 
 }
