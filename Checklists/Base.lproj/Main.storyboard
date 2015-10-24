@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="RfB-yC-afV">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--(Name of the Checklist)-->
@@ -21,15 +22,15 @@
                                     <rect key="frame" x="0.0" y="0.0" width="533" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KtB-3I-Qrk">
-                                            <rect key="frame" x="28" y="11" width="499" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KtB-3I-Qrk">
+                                            <rect key="frame" x="38" y="11.5" width="489" height="20.5"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="√" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTa-29-E30">
-                                            <rect key="frame" x="8" y="8" width="12" height="27.5"/>
+                                            <rect key="frame" x="8" y="4" width="12" height="27.5"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -37,6 +38,11 @@
                                         </label>
                                     </subviews>
                                     <animations/>
+                                    <constraints>
+                                        <constraint firstItem="KtB-3I-Qrk" firstAttribute="leading" secondItem="ags-2S-Lqp" secondAttribute="leadingMargin" constant="30" id="8OB-hJ-RQy"/>
+                                        <constraint firstAttribute="trailing" secondItem="KtB-3I-Qrk" secondAttribute="trailing" constant="6" id="esh-w6-tWO"/>
+                                        <constraint firstItem="KtB-3I-Qrk" firstAttribute="centerY" secondItem="ags-2S-Lqp" secondAttribute="centerY" id="zvn-Li-Xma"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
                                 <connections>
@@ -80,9 +86,12 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name of the Item" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ztl-CZ-g86">
-                                                    <rect key="frame" x="8" y="0.0" width="584" height="43.5"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name of the Item" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ztl-CZ-g86">
+                                                    <rect key="frame" x="8" y="7" width="584" height="30"/>
                                                     <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="sQ1-gO-hR5"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                     <connections>
@@ -92,6 +101,11 @@
                                                 </textField>
                                             </subviews>
                                             <animations/>
+                                            <constraints>
+                                                <constraint firstItem="ztl-CZ-g86" firstAttribute="leading" secondItem="P7T-oN-6Dh" secondAttribute="leading" constant="8" id="05g-B4-kbN"/>
+                                                <constraint firstAttribute="trailing" secondItem="ztl-CZ-g86" secondAttribute="trailing" constant="8" id="JPV-OX-bpE"/>
+                                                <constraint firstItem="ztl-CZ-g86" firstAttribute="top" secondItem="P7T-oN-6Dh" secondAttribute="top" constant="7" id="hIa-TQ-waC"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
                                     </tableViewCell>
@@ -172,9 +186,12 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name of the List" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Svc-sW-lWg">
-                                                    <rect key="frame" x="8" y="0.0" width="584" height="43.5"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name of the List" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Svc-sW-lWg">
+                                                    <rect key="frame" x="8" y="8" width="584" height="30"/>
                                                     <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="BLR-Yi-7DG"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                     <connections>
@@ -184,6 +201,11 @@
                                                 </textField>
                                             </subviews>
                                             <animations/>
+                                            <constraints>
+                                                <constraint firstItem="Svc-sW-lWg" firstAttribute="leading" secondItem="NCd-Np-Bfz" secondAttribute="leading" constant="8" id="RQU-9f-YUc"/>
+                                                <constraint firstItem="Svc-sW-lWg" firstAttribute="top" secondItem="NCd-Np-Bfz" secondAttribute="top" constant="8" id="nuW-ND-P7z"/>
+                                                <constraint firstAttribute="trailing" secondItem="Svc-sW-lWg" secondAttribute="trailing" constant="8" id="rRB-mz-hiH"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
                                     </tableViewCell>
@@ -358,4 +380,5 @@
     <inferredMetricsTieBreakers>
         <segue reference="f8l-t8-sf8"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" red="0.50550347984120458" green="0.90588235294117647" blue="0.39981403385767966" alpha="1" colorSpace="calibratedRGB"/>
 </document>
