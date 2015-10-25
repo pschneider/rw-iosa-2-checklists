@@ -101,24 +101,27 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
 
     func itemDetailViewController(controller: ItemDetailViewController, didFinishAddingItem item: ChecklistItem) {
 
-        let newRowIndex = checklist.items.count
         checklist.items.append(item)
+        checklist.sortItems()
+        tableView.reloadData()
 
-        let indexPath = NSIndexPath(forRow: newRowIndex, inSection: 0)
-        let indexPaths = [indexPath]
-        tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
+//        let indexPath = NSIndexPath(forRow: newRowIndex, inSection: 0)
+//        let indexPaths = [indexPath]
+//        tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Automatic)
 
         dismissViewControllerAnimated(true, completion: nil)
     }
 
     func itemDetailViewController(controller: ItemDetailViewController, didFinishEditingItem item: ChecklistItem) {
-        if let index = checklist.items.indexOf(item) {
-            let indexPath = NSIndexPath(forRow: index, inSection: 0)
-            if let cell = tableView.cellForRowAtIndexPath(indexPath) {
-                configureTextForCell(cell, withChecklistItem: item)
-                configureDueDateLabelForCell(cell, withChecklistItem: item)
-            }
-        }
+//        if let index = checklist.items.indexOf(item) {
+//            let indexPath = NSIndexPath(forRow: index, inSection: 0)
+//            if let cell = tableView.cellForRowAtIndexPath(indexPath) {
+//                configureTextForCell(cell, withChecklistItem: item)
+//                configureDueDateLabelForCell(cell, withChecklistItem: item)
+//            }
+//        }
+        checklist.sortItems()
+        tableView.reloadData()
         dismissViewControllerAnimated(true, completion: nil)
     }
 }

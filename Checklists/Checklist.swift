@@ -21,6 +21,7 @@ class Checklist: NSObject, NSCoding {
         self.name = name
         self.iconName = iconName
         super.init()
+        sortItems()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -28,6 +29,7 @@ class Checklist: NSObject, NSCoding {
         iconName = aDecoder.decodeObjectForKey("IconName") as! String
         items = aDecoder.decodeObjectForKey("Items") as! [ChecklistItem]
         super.init()
+        sortItems()
     }
 
     func encodeWithCoder(aCoder: NSCoder) {
@@ -41,5 +43,11 @@ class Checklist: NSObject, NSCoding {
 //        for item in items where !item.checked { count++ }
 //        return count
         return items.reduce(0) { (cnt, item) in cnt + (item.checked ? 0 : 1) }
+    }
+
+    func sortItems() {
+        items.sortInPlace { (item1, item2) -> Bool in
+            item1.dueDate.compare(item2.dueDate) == .OrderedAscending
+        }
     }
 }
