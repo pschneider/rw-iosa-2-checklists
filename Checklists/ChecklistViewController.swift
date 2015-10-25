@@ -55,6 +55,7 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
         let item = checklist.items[indexPath.row]
         configureTextForCell(cell, withChecklistItem: item)
         configureCheckmarkForCell(cell, withChecklistItem: item)
+        configureDueDateLabelForCell(cell, withChecklistItem: item)
         return cell
     }
 
@@ -82,6 +83,14 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
     func configureTextForCell(cell: UITableViewCell, withChecklistItem item: ChecklistItem) {
         let label = cell.viewWithTag(1000) as! UILabel
         label.text = item.text
+    }
+
+    func configureDueDateLabelForCell(cell: UITableViewCell, withChecklistItem item: ChecklistItem) {
+        let label = cell.viewWithTag(1002) as! UILabel
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = .MediumStyle
+        formatter.timeStyle = .ShortStyle
+        label.text = "Due \(formatter.stringFromDate(item.dueDate))"
     }
 
     // MARK: ItemDetailViewControllerDelegate

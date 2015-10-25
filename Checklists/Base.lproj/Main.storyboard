@@ -22,8 +22,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="533" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KtB-3I-Qrk">
-                                            <rect key="frame" x="38" y="11.5" width="489" height="20.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Todo Item Text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KtB-3I-Qrk">
+                                            <rect key="frame" x="38" y="4" width="489" height="20.5"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -36,12 +36,22 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PgV-fv-eOt">
+                                            <rect key="frame" x="38" y="21.5" width="489" height="17"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <animations/>
                                     <constraints>
                                         <constraint firstItem="KtB-3I-Qrk" firstAttribute="leading" secondItem="ags-2S-Lqp" secondAttribute="leadingMargin" constant="30" id="8OB-hJ-RQy"/>
+                                        <constraint firstItem="PgV-fv-eOt" firstAttribute="leading" secondItem="KtB-3I-Qrk" secondAttribute="leading" id="AjJ-5y-ZbO"/>
+                                        <constraint firstItem="PgV-fv-eOt" firstAttribute="trailing" secondItem="KtB-3I-Qrk" secondAttribute="trailing" id="dHn-es-ZZ4"/>
                                         <constraint firstAttribute="trailing" secondItem="KtB-3I-Qrk" secondAttribute="trailing" constant="6" id="esh-w6-tWO"/>
-                                        <constraint firstItem="KtB-3I-Qrk" firstAttribute="centerY" secondItem="ags-2S-Lqp" secondAttribute="centerY" id="zvn-Li-Xma"/>
+                                        <constraint firstItem="PgV-fv-eOt" firstAttribute="top" secondItem="KtB-3I-Qrk" secondAttribute="bottom" constant="-3" id="ug1-dJ-XcE"/>
+                                        <constraint firstItem="KtB-3I-Qrk" firstAttribute="centerY" secondItem="ags-2S-Lqp" secondAttribute="centerY" constant="-8" id="zvn-Li-Xma"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
