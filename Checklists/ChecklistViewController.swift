@@ -116,6 +116,7 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
             let indexPath = NSIndexPath(forRow: index, inSection: 0)
             if let cell = tableView.cellForRowAtIndexPath(indexPath) {
                 configureTextForCell(cell, withChecklistItem: item)
+                configureDueDateLabelForCell(cell, withChecklistItem: item)
             }
         }
         dismissViewControllerAnimated(true, completion: nil)
